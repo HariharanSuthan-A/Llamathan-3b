@@ -43,14 +43,14 @@ The model specializes in:
 
 It was trained using a structured instruction dataset in the format:
 
-```json
+
 {
   "instruction": "Explanation of Mixture of Experts (MoE).",
   "input": "Mixtral models-la 'MoE' na enna logic?",
   "output": "Motha model-aiyum orey nerathula use pannaama, specific question-ku endha 'Expert' best-nu router choose pannum. Performance high aagum aana cost kammi."
 }
 
-![Model Banner](assets/image%201.jpeg)
+
 ## 🗂 Dataset Format
 
 Each training sample includes:
@@ -97,6 +97,7 @@ Tamil fluency & coherence validation
 Technical correctness review
 
 ## 🚀 Inference
+</> Python 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
@@ -113,7 +114,7 @@ Explanation of Mixture of Experts (MoE).
 ### Input:
 Mixtral models-la 'MoE' na enna logic?
 
-### Response:
+### Output:
 """
 
 inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
