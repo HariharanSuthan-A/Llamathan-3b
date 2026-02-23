@@ -44,13 +44,17 @@ The model specializes in:
 It was trained using a structured instruction dataset in the format:
 
 
+
+```json
 {
   "instruction": "Explanation of Mixture of Experts (MoE).",
   "input": "Mixtral models-la 'MoE' na enna logic?",
   "output": "Motha model-aiyum orey nerathula use pannaama, specific question-ku endha 'Expert' best-nu router choose pannum. Performance high aagum aana cost kammi."
 }
+```
 
 
+![Model Banner](assets/image%201.jpeg)
 ## 🗂 Dataset Format
 
 Each training sample includes:
@@ -74,30 +78,34 @@ output → Expected response
 The model was trained to autoregressively predict only the Response portion.
 
 ## ⚙️ Training Details
+```
 Parameter	Value
-Epochs	3
-Batch Size	8
-Learning Rate	5e-5
-Optimizer	AdamW
-LR Scheduler	Cosine Decay
-Max Sequence Length	2048
-Precision	bfloat16 / fp16
-Gradient Accumulation	Enabled
-Training Hardware	NVIDIA T4
+Epochs: 3
+Batch Size: 8
+Learning Rate: 5e-5
+Optimizer: AdamW
+LR Scheduler: Cosine Decay
+Max Sequence Length: 2048
+Precision: bfloat16 / fp16
+Gradient Accumulation: Enabled
+Training Hardware: NVIDIA T4
+```
 ## 🧪 Evaluation Strategy
 
 Evaluation was conducted using:
 
-Manual qualitative assessment
+  Manual qualitative assessment
 
-Instruction-following accuracy checks
+  Instruction-following accuracy checks
 
-Tamil fluency & coherence validation
+  Tamil fluency & coherence validation
 
-Technical correctness review
+  Technical correctness review
 
 ## 🚀 Inference
+```
 </> Python 
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
@@ -122,6 +130,7 @@ outputs = model.generate(**inputs, max_new_tokens=200)
 
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
+```
 ## 🎓 Suitable Use Cases
 
 Tamil educational assistants
