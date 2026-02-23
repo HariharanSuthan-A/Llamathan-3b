@@ -107,26 +107,10 @@ Compatible with:
 - Good Tanglish handling
 
 
-
-
----
-
-## 📌 Model Overview
-
-**Model Name:** Llamathan-3B  
-**Base Model:** :Llama2 (3B Instruct)  
-**Architecture:** LLaMA 2 (Decoder-only Transformer)  
-**Model Type:** Causal Language Model  
-**Fine-Tuning Method:** Supervised Fine-Tuning (SFT)  
-**Dataset Size:** 3,202 instruction samples  
-**Primary Language:** Tamil (Tanglish + Tamil technical explanations)
-
 ---
 ## 🤗 Hosted On
 
 This model is publicly available on:
-
-**:contentReference[oaicite:1]{index=1}**
 
 👉 https://huggingface.co/Hariharan05/Llamathan-3B
 
@@ -359,3 +343,8 @@ Terminology mixing between Tamil & English
 
 Limited reasoning depth compared to larger models
 
+
+---
+
+## License : 
+@Llama2
