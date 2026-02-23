@@ -1,0 +1,145 @@
+# Llamathan-3B 🧠  
+Tamil Instruction-Following Language Model (Tanglish + Technical Tamil)
+
+![Model Banner](assets/image%200.jpeg)
+
+---
+
+## 📌 Model Overview
+
+**Model Name:** Llamathan-3B  
+**Base Model:** :Llama2 (3B Instruct)  
+**Architecture:** LLaMA 2 (Decoder-only Transformer)  
+**Model Type:** Causal Language Model  
+**Fine-Tuning Method:** Supervised Fine-Tuning (SFT)  
+**Dataset Size:** 3,202 instruction samples  
+**Primary Language:** Tamil (Tanglish + Tamil technical explanations)
+
+---
+
+## 🎯 Model Purpose
+
+Llamathan-3B is optimized for:
+
+- ✅ Tamil instruction-following
+- ✅ Code-mixed Tamil (Tanglish) explanations
+- ✅ Technical concept explanations in simplified Tamil
+- ✅ Educational Q&A style prompts
+- ✅ SQL query explanation & generation
+- ✅ Multi-step reasoning
+- ✅ Chain-of-Thought style responses
+
+---
+
+## 🧠 Model Description
+
+Llamathan-3B is a fine-tuned version of Llama 2 3B Instruct, adapted for Tamil-centric instructional tasks.
+
+The model specializes in:
+- AI/ML explanations in simplified Tamil
+- Technical concept breakdowns
+- Conversational educational guidance
+- Structured reasoning responses
+
+It was trained using a structured instruction dataset in the format:
+
+```json
+{
+  "instruction": "Explanation of Mixture of Experts (MoE).",
+  "input": "Mixtral models-la 'MoE' na enna logic?",
+  "output": "Motha model-aiyum orey nerathula use pannaama, specific question-ku endha 'Expert' best-nu router choose pannum. Performance high aagum aana cost kammi."
+}
+
+![Model Banner](assets/image%201.jpeg)
+## 🗂 Dataset Format
+
+Each training sample includes:
+
+instruction → Task definition
+
+input → User query (Tamil / Tanglish / Technical)
+
+output → Expected response
+
+## Prompt Template Used During Training
+### Instruction:
+{instruction}
+
+### Input:
+{input}
+
+### Response:
+{output}
+
+The model was trained to autoregressively predict only the Response portion.
+
+## ⚙️ Training Details
+Parameter	Value
+Epochs	3
+Batch Size	8
+Learning Rate	5e-5
+Optimizer	AdamW
+LR Scheduler	Cosine Decay
+Max Sequence Length	2048
+Precision	bfloat16 / fp16
+Gradient Accumulation	Enabled
+Training Hardware	NVIDIA T4
+## 🧪 Evaluation Strategy
+
+Evaluation was conducted using:
+
+Manual qualitative assessment
+
+Instruction-following accuracy checks
+
+Tamil fluency & coherence validation
+
+Technical correctness review
+
+## 🚀 Inference
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+model_name = "Hariharan05/Llamathan-3B"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name,
+                                             torch_dtype=torch.float16,
+                                             device_map="auto")
+
+prompt = """### Instruction:
+Explanation of Mixture of Experts (MoE).
+
+### Input:
+Mixtral models-la 'MoE' na enna logic?
+
+### Response:
+"""
+
+inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
+outputs = model.generate(**inputs, max_new_tokens=200)
+
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
+## 🎓 Suitable Use Cases
+
+Tamil educational assistants
+
+AI/ML concept explanation chatbot
+
+SQL query tutor (Tamil explanation)
+
+Code-mixed Tamil conversational agents
+
+Technical interview preparation assistant
+
+## ⚠️ Limitations
+
+Small dataset size (3,202 samples)
+
+May hallucinate in unseen domains
+
+Terminology mixing between Tamil & English
+
+Limited reasoning depth compared to larger models
+
